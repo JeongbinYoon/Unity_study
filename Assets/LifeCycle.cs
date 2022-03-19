@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LifeCycle : MonoBehaviour
 {
-    // Awakke : 게임 오브젝트 생성할 떄, 최초 실행
+    // Awake : 게임 오브젝트 생성할 떄, 최초 실행
     void Awake()
     {
         Debug.Log("플레이어 데이터가 준비되어습니다.");
