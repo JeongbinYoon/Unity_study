@@ -4,54 +4,49 @@ using UnityEngine;
 
 public class LifeCycle : MonoBehaviour
 {
-    // Awake : 게임 오브젝트 생성할 떄, 최초 실행
-    void Awake()
-    {
-        Debug.Log("플레이어 데이터가 준비되어습니다.");
-    }
-
-    // OnEnable : 게임 오브젝트가 활성화 되었을 때
-    void OnEnable()
-    {
-        Debug.Log("플레이어가 로그인하였습니다.");
-    }
-
-    // Start : 업데이트 시작 직전, 최초 실행
-    void Start()
-    {
-        Debug.Log("사냥 장비를 챙겼습니다.");
-    }
-
-    // FixedUpdate : 물리 연산 업데이트
-    // 고정된 실행 주기로 CPU를 많이 사용
-    // 1초에 약 50회 호출
-    void FixedUpdate()
-    {
-        Debug.Log("이동~");
-    }
-
     // Update : 게임 로직 업데이트
     // 환경에 따라 실행 주기가 떨어질 수 있음
     void Update()
     {
-        Debug.Log("몬스터 사냥!!");
+        if (Input.anyKeyDown)
+            Debug.Log("플레이어가 아무 키를 눌렀습니다.");
+
+        if (Input.anyKey)
+            Debug.Log("플레이어가 아무 키를 누르고 있습니다.");
+
+        if (Input.GetKeyDown(KeyCode.Return))
+            Debug.Log("아이템을 구입하였습니다.");
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+            Debug.Log("왼쪽으로 이동 중.");
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+            Debug.Log("오른쪽 이동을 멈추었습니다..");
+
+        if (Input.GetMouseButtonDown(0))
+            Debug.Log("미사일 모으는 중");
+
+        if (Input.GetMouseButton(0))
+            Debug.Log("미사일 발사!");
+
+        if (Input.GetMouseButtonUp(0))
+            Debug.Log("슈퍼 미사일 발사!!");
+
+        if (Input.GetMouseButton(1))
+            Debug.Log("오른쪽 클릭!");
+
+        if (Input.GetMouseButton(2))
+            Debug.Log("가운데 버튼 클릭");
+
+        // 점프
+        if (Input.GetButtonDown("Jump"))
+            Debug.Log("점프!");
+
+        if (Input.GetButton("Jump"))
+            Debug.Log("점프 모으는 중...");
+
+        if (Input.GetButtonUp("Jump"))
+            Debug.Log("슈퍼 점프!!");
     }
 
-    // LateUpdate : 모든 업데이트 끝난 후
-    void LateUpdate()
-    {
-        Debug.Log("경험치 획득");
-    }
-
-    // OnDisable : 게임 오브젝트가 비활성화 되었을 때
-    void OnDisable()
-    {
-        Debug.Log("플레이어가 로그인아웃하였습니다.");
-    }
-
-    // OnDestroy : 게임 오브젝트가 삭제될 때
-    void OnDestroy()
-    {
-        Debug.Log("플레이어 데이터를 해체하였습니다.");
-    }
 }
