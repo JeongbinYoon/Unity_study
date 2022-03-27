@@ -9,29 +9,23 @@ public class MyBall : MonoBehaviour
     void Start()
     {
         rigid = GetComponent<Rigidbody>();
-        //rigid.AddForce(Vector3.up * 50, ForceMode.Impulse);
     }
 
 
     void FixedUpdate()
     {
-        //#1. 속력 바꾸기
-        //rigid.velocity = Vector3.forward; 
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
-        //#2. 힘을 가하기
-        /* if (Input.GetButtonDown("Jump")) { 
-            rigid.AddForce(Vector3.up * 25, ForceMode.Impulse);
-        }
+        Vector3 vec = new Vector3(h, 0, v);
 
-        Vector3 vec = new Vector3(
-            Input.GetAxisRaw("Horizontal"),
-            0, 
-            Input.GetAxisRaw("Vertical"));
+        rigid.AddForce(vec, ForceMode.Impulse); 
 
-        rigid.AddForce(vec, ForceMode.Impulse); */
+    }
 
-
-        //#3. 회전력
-        rigid.AddTorque(Vector3.up);
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Cube")
+            rigid.AddForce(Vector3.up * 2, ForceMode.Impulse);
     }
 }
